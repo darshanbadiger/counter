@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react'
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 
-function App() {
+const App = () => {
+  const [count, setCount] = useState(0);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container my-5">
+    <Header></Header>
+      <div className="card text-center my-5">
+        <div className="card-body">
+          <h1>Counter Application</h1>
+
+          <div className="my-5">
+            <h2 className='my-5'>Count:{count}</h2>
+            <button className="btn btn-success mx-3" onClick={()=>setCount(count+1)}> Increment</button>
+            <button className="btn btn-danger mx-3"onClick={()=>setCount(count-1)}
+            disabled={count===0}> Decrement</button>
+            <button className="btn btn-secondary mx-3"onClick={()=>setCount(0)}
+            disabled={count===0}> Reset</button>
+          </div>
+        </div>
+      </div>
+      <Footer/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
